@@ -6,9 +6,11 @@ const Card = require('../src/Card')
 describe('Turn', () => {
     let card;
     let turn;
+    let turn2;
     beforeEach(() => {
         card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
         turn = new Turn('no', card);
+        turn2 = new Turn('object', card);
     })
 
 it('should be a function', () => {
@@ -24,7 +26,7 @@ it('should be able to take a user guess as an argument', () => {
 })
     
 it('should be able to take an instance of Card as an argument', () => {
-    expect(turn.currentCard).to.equal(card)
+    expect(turn.card).to.be.an.instanceOf(Card)
 })
 
 it('should be able to return a users guess', () => {
@@ -36,11 +38,13 @@ it('should be able to return the current card', () => {
 })
 
 it('should be able to evaluate whether or not the users guess is correct', () => {
-    expect(turn.evaluateGuess(card)).to.equal(false)
+    expect(turn.evaluateGuess(card)).to.equal(false);
+    expect(turn2.evaluateGuess(card)).to.equal(true);
 })
 
 it('should be able to give feedback to the user based on their guess', () => {
     expect(turn.giveFeedback(card)).to.equal('incorrect!')
+    expect(turn2.giveFeedback(card)).to.equal('correct!')
 })
 
 })
