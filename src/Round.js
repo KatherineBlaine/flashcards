@@ -34,9 +34,15 @@ class Round {
     }
 
     endRound() {
-        let message =  `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`
-        console.log(message)
-        return message;
+        if (this.calculatePercentCorrect === 100%) {
+            console.timeEnd('You completed the activity in:')
+            let message =  `** Round over! ** Congrats! You completed the activity with a score of 100%.`
+            console.log(message)
+            return message;
+        } else {
+            let message = `** Round Over! ** You completed the activity with a score of ${this.calculatePercentCorrect}. Try again!`
+            
+        }
     }
 }
 

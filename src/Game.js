@@ -28,6 +28,10 @@ class Game {
     this.printQuestion(this.currentRound)
   }
 
+  tryIncorrectAgain() {
+    
+  }
+
   test1() {
     return this.cards = prototypeQuestions.map(element => new Card(element))
   }
