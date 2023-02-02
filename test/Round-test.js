@@ -6,17 +6,14 @@ const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Turn = require('../src/Turn.js');
 const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 
 describe('Round', () => {
-    let card1;
-    let card2;
-    let card3;
-    let deck;
-    let round;
+    let card1, card2, card3, deck, round;
     beforeEach(() => {
-        card1 = new Card(data.prototypeData[0]);
-        card2 = new Card(data.prototypeData[1]);
-        card3 = new Card(data.prototypeData[2]);
+        card1 = new Card(prototypeQuestions[0]);
+        card2 = new Card(prototypeQuestions[1]);
+        card3 = new Card(prototypeQuestions[2]);
         deck = new Deck([card1, card2, card3]);
         round = new Round(deck);
     })
@@ -31,8 +28,6 @@ describe('Round', () => {
 
     it('should be able to find the current card being played', () => {
         expect(round.returnCurrentCard()).to.deep.equal(card1)
-        // console.log(round.returnCurrentCard())
-        // console.log(round.returnCurrentCard().answers)
     })
 
     it('should be able to update the turn count', () => {

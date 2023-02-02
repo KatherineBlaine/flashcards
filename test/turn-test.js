@@ -1,15 +1,14 @@
 const chai = require('chai');
 const expect = chai.expect;
 const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 const Turn = require('../src/Turn');
 const Card = require('../src/Card')
 
 describe('Turn', () => {
-    let card;
-    let turn;
-    let turn2;
+    let card, turn, turn2;
     beforeEach(() => {
-        card = new Card(data.prototypeData[0]);
+        card = new Card(prototypeQuestions[0]);
         turn = new Turn('array', card);
         turn2 = new Turn('object', card);
     })

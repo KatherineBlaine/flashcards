@@ -3,11 +3,12 @@ const expect = chai.expect;
 
 const Card = require('../src/Card');
 const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 
 describe('Card', () => {
   let card;
   beforeEach(() => {
-    card = new Card(data.prototypeData[0]);
+    card = new Card(prototypeQuestions[0]);
   })
 
   it('should be a function', function() {

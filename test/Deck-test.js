@@ -4,12 +4,10 @@ const expect = chai.expect;
 const Deck = require('../src/Deck');
 const Card = require('../src/Card.js');
 const data = require('../src/data');
+const prototypeQuestions = data.prototypeData;
 
 describe('Deck', () => {
-    let card1;
-    let card2;
-    let card3;
-    let deck;
+    let card1, card2, card3, deck;
     beforeEach(() => {
         card1 = new Card(5, 'Whats KBs favorite animal?', ['elephant', 'dolphin', 'giraffe'], 'giraffe');
         card2 = new Card(4, 'What is the capital of Minnesota?' ['Minneapolis', 'St. Paul', 'Rochester'], 'St. Paul');

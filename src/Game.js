@@ -22,9 +22,9 @@ class Game {
 
   start() {
     this.cards = prototypeQuestions.map(element => new Card(element))
-    const deck = new Deck(this.cards);
-    this.currentRound = new Round(deck);
-    this.printMessage(deck)
+    this.deck = new Deck(this.cards);
+    this.currentRound = new Round(this.deck);
+    this.printMessage(this.deck)
     this.printQuestion(this.currentRound)
   }
 
