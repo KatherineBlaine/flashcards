@@ -13,8 +13,8 @@ class Turn {
         return this.card;
     }
 
-    evaluateGuess(card) {
-        return this.userGuess === card.correctAnswer;
+    evaluateGuess() {
+        return this.returnGuess() === this.returnCard().correctAnswer;
     }
 
     giveFeedback(card) {

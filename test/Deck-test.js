@@ -3,6 +3,7 @@ const expect = chai.expect;
 
 const Deck = require('../src/Deck');
 const Card = require('../src/Card.js');
+const data = require('../src/data');
 
 describe('Deck', () => {
     let card1;

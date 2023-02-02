@@ -4,7 +4,8 @@ const expect = chai.expect;
 const Round = require('../src/Round');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
-const Turn = require('../src/Turn.js')
+const Turn = require('../src/Turn.js');
+const data = require('../src/data');
 
 describe('Round', () => {
     let card1;
@@ -13,9 +14,9 @@ describe('Round', () => {
     let deck;
     let round;
     beforeEach(() => {
-        card1 = new Card(5, 'Whats KBs favorite animal?', ['elephant', 'dolphin', 'giraffe'], 'giraffe');
-        card2 = new Card(4, 'What is the capital of Minnesota?', ['Minneapolis', 'St. Paul', 'Rochester'], 'St. Paul');
-        card3 = new Card(10, 'What is the biggest ski resort in America?', ['Vail', 'Breckenridge', 'Park City'], 'Park City');
+        card1 = new Card(data.prototypeData[0]);
+        card2 = new Card(data.prototypeData[1]);
+        card3 = new Card(data.prototypeData[2]);
         deck = new Deck([card1, card2, card3]);
         round = new Round(deck);
     })
@@ -30,6 +31,8 @@ describe('Round', () => {
 
     it('should be able to find the current card being played', () => {
         expect(round.returnCurrentCard()).to.deep.equal(card1)
+        // console.log(round.returnCurrentCard())
+        // console.log(round.returnCurrentCard().answers)
     })
 
     it('should be able to update the turn count', () => {
@@ -63,21 +66,21 @@ describe('Round', () => {
     })
 
     it('should be able to evaluate and record whether or not a guess is correct', () => {
-        expect(round.takeTurn('giraffe')).to.equal('correct!')
-        expect(round.takeTurn('Minneapolis')).to.equal('incorrect!')
+        expect(round.takeTurn('object')).to.equal('correct!')
+        expect(round.takeTurn('function')).to.equal('incorrect!')
     })
 
     it('should be able to store incorrect guesses into an array', () => {
-        round.takeTurn('elephant');
-        round.takeTurn('St. Paul')
-        expect(round.incorrectGuesses).to.deep.equal([5])
+        round.takeTurn('array');
+        round.takeTurn('array')
+        expect(round.incorrectGuesses).to.deep.equal([1])
         expect(round.correctGuesses).to.equal(1)
     })
 
     it('should be able to calculate the percentage of correct answers', () => {
-        round.takeTurn('giraffe')
-        round.takeTurn('Minneapolis')
-        round.takeTurn('Park City')
+        round.takeTurn('object')
+        round.takeTurn('object')
+        round.takeTurn('mutator method')
 
         expect(round.incorrectGuesses.length).to.equal(1);
         expect(round.correctGuesses).to.equal(2)
@@ -86,9 +89,9 @@ describe('Round', () => {
     })
 
     it('should be able to print a message with the users score to the console', () => {
-        round.takeTurn('giraffe')
-        round.takeTurn('Minneapolis')
-        round.takeTurn('Park City')
+        round.takeTurn('object')
+        round.takeTurn('object')
+        round.takeTurn('mutator method')
 
         expect(round.endRound()).to.equal('** Round over! ** You answered 67% of the questions correctly!')
     })

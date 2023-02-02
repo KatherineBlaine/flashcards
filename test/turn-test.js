@@ -1,5 +1,6 @@
 const chai = require('chai');
 const expect = chai.expect;
+const data = require('../src/data');
 const Turn = require('../src/Turn');
 const Card = require('../src/Card')
 
@@ -8,8 +9,8 @@ describe('Turn', () => {
     let turn;
     let turn2;
     beforeEach(() => {
-        card = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-        turn = new Turn('no', card);
+        card = new Card(data.prototypeData[0]);
+        turn = new Turn('array', card);
         turn2 = new Turn('object', card);
     })
 
@@ -22,7 +23,7 @@ it('should be an instance of Turn', () => {
 })
     
 it('should be able to take a user guess as an argument', () => {
-    expect(turn.userGuess).to.equal('no')
+    expect(turn.userGuess).to.equal('array')
 })
     
 it('should be able to take an instance of Card as an argument', () => {
@@ -30,7 +31,7 @@ it('should be able to take an instance of Card as an argument', () => {
 })
 
 it('should be able to return a users guess', () => {
-   expect(turn.returnGuess()).to.equal('no')
+   expect(turn.returnGuess()).to.equal('array')
 })
 
 it('should be able to return the current card', () => {
