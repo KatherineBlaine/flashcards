@@ -8,6 +8,7 @@ const Round = require('../src/Round');
 const Card = require('../src/Card');
 const Deck = require('../src/Deck');
 const Turn = require('../src/Turn.js');
+const Game = require('../src/Game.js');
 
 describe('Round', () => {
     let card1, card2, card3, deck, round;
@@ -45,11 +46,11 @@ describe('Round', () => {
     })
 
     it('should be able to update the current card after each turn', () => {
-        expect(round.returnCurrentCard()).to.deep.equal(card1)
+        expect(round.returnCurrentCard()).to.deep.equal(card1);
 
         round.takeTurn();
 
-        expect(round.returnCurrentCard()).to.deep.equal(card2)
+        expect(round.returnCurrentCard()).to.deep.equal(card2);
 
         round.takeTurn();
 

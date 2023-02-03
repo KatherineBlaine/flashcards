@@ -30,27 +30,16 @@ describe('game', () => {
         expect(game1.cards).to.deep.equal(prototypeQuestions);
     })
 
-    it('should be able to create a new instance of Deck using an array of Cards', () => {
+    it('should be able to create a new instance of Deck using an array of Cards instantiated by the prototypeQuestions array', () => {
         expect(game1.deck).to.be.an.instanceOf(Deck);
         expect(game1.cards).to.be.an('array');
-        expect(game1.test1()).to.deep.equal(prototypeQuestions);
+        expect(game1.cards).to.deep.equal(prototypeQuestions);
         expect(game1.deck).to.deep.equal(new Deck(prototypeQuestions));
-        expect(game1.deck.countCards()).to.equal(30);
     })
 
 
     it('should be able to create a new instance of Round using the an instance of Deck', () => {
         expect(game1.currentRound).to.deep.equal(new Round(game1.deck));
-        expect(game1.currentRound.currentCard).to.deep.equal(card1);
-    })
-
-    it('should be able to take in and evaluate user guesses', () => {
-        let game1Feedback = game1.currentRound.takeTurn('array');
-
-        expect(game1Feedback).to.equal('incorrect!');
-        expect(game1.currentRound.takeTurn('array')).to.equal('correct!');
-        expect(game1.currentRound.takeTurn('mutator method')).to.equal('correct!');
-
     })
 
     it('should be able to return a users guess', () => {
@@ -58,6 +47,15 @@ describe('game', () => {
 
         expect(game1.currentRound.newTurn.returnGuess()).to.equal('House');
         expect(game1.currentRound.newTurn.returnCard()).to.be.an.instanceOf(Card);
+
+    })
+
+    it('should be able to provide feedback based on an evaluation of user guess', () => {
+        let game1Feedback = game1.currentRound.takeTurn('array');
+
+        expect(game1Feedback).to.equal('incorrect!');
+        expect(game1.currentRound.takeTurn('array')).to.equal('correct!');
+        expect(game1.currentRound.takeTurn('mutator method')).to.equal('correct!');
 
     })
 

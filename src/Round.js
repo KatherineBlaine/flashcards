@@ -1,4 +1,3 @@
-
 const Turn = require('../src/Turn.js');
 
 class Round {
@@ -19,7 +18,7 @@ class Round {
         this.turns += 1;
         this.feedback = this.newTurn.giveFeedback(this.currentCard);
         if (!this.newTurn.evaluateGuess(this.currentCard)) {
-            this.incorrectGuesses.push(this.currentCard.id)
+            this.incorrectGuesses.push(this.currentCard.id);
         } else {
             this.correctGuesses +=1;
         }
@@ -34,15 +33,10 @@ class Round {
     }
 
     endRound() {
-        if (this.calculatePercentCorrect === 100%) {
-            console.timeEnd('You completed the activity in:')
-            let message =  `** Round over! ** Congrats! You completed the activity with a score of 100%.`
-            console.log(message)
-            return message;
-        } else {
-            let message = `** Round Over! ** You completed the activity with a score of ${this.calculatePercentCorrect}. Try again!`
-            
-        }
+        let message =  `** Round over! ** You answered ${this.calculatePercentCorrect()}% of the questions correctly!`;
+        console.log(message);
+        this.timeElapsed = console.timeEnd('You completed the activity in:');
+        return message;
     }
 }
 
